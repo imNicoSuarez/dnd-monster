@@ -18,6 +18,10 @@ label {
 
 input {
   margin-bottom: 10px;
+  height: 44px;
+}
+select, button {
+  height: 44px;
 }
 
 #gridContainer {
@@ -41,10 +45,15 @@ input {
 
 #creatureList {
   margin-top: 20px;
+  display: flex;
 }
 
 .creatureItem {
-  margin-bottom: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 250px;
+  padding: 20px;
 }
 
 .creatureItem span {
@@ -52,9 +61,20 @@ input {
 }
 
 .creatureItem .deleteButton {
-  margin-left: 5px;
+  width: 100%;
 }
 
+.yCoordinate, .xCoordinate {
+  margin: 2px;
+}
+
+.creatureItem .xCoordinate, .creatureItem .yCoordinate {
+  width: 75px;
+}
+
+.creatureHealth {
+  font-size: 24px;
+}
 .creatureElement {
   display: inline-block;
   border: 1px solid #999;
@@ -62,10 +82,12 @@ input {
   margin: 5px;
 }
 
-.creatureDead {
+div.creatureDead {
   background-color: red;
   text-decoration: line-through;
 }
+
+
 
 .flexcontainer {
   display: flex;
@@ -94,4 +116,15 @@ input {
   width: 36px;
   border-radius: 100%;
   border: 2px solid #FFB800;
+}
+
+img.creatureDead{
+  border: 6px solid red;
+  opacity: 30%;
+  width: 28px;
+}
+
+.subtractHealth {
+  margin: 5px;
+  width: 50px;
 }

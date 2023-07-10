@@ -106,11 +106,15 @@ document.addEventListener("DOMContentLoaded", function() {
       const { xCoordinate, yCoordinate } = creature;
       const cellId = `cell-${yCoordinate}-${xCoordinate}`;
       const gridCell = document.getElementById(cellId);
+
   
       if (gridCell) {
         const img = document.createElement("img");
         img.classList.add("creatureImageDraw");
         img.src = `./img/${creature.name.toLocaleLowerCase()}.png`;
+        if (creature.health <= 0 ) {
+            img.classList.add("creatureDead");
+        } 
         gridCell.appendChild(img);
       }
     });
@@ -160,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
         localStorage.setItem("creatures", JSON.stringify(creatures));
         loadCreatures();
+        drawCreaturesOnGrid() 
       }
   
       subtractHealthInput.value = "";
@@ -216,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
       const health = document.createElement("span");
       health.classList.add("creatureHealth");
-      health.textContent = `Vidas: ${creature.health}`;
+      health.textContent = `PG: ${creature.health}`;
 
       const coordinates = document.createElement("span");
       coordinates.textContent = `Coordenadas:`
@@ -255,6 +260,8 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCoordinates(index);
       });
 
+      const pgLabel = document.createElement("span");
+      pgLabel.textContent = `Goles Recibidos:`
   
       const subtractHealthInput = document.createElement("input");
       subtractHealthInput.classList.add("subtractHealth");
@@ -263,14 +270,14 @@ document.addEventListener("DOMContentLoaded", function() {
       subtractHealthInput.id = `subtractHealth-${index}`;
   
       const subtractButton = document.createElement("button");
-      subtractButton.textContent = "Restar";
+      subtractButton.textContent = "Restar PG";
       subtractButton.addEventListener("click", function() {
         subtractCreatureHealth(index);
       });
   
       const deleteButton = document.createElement("button");
       deleteButton.classList.add("deleteButton");
-      deleteButton.textContent = "Eliminar";
+      deleteButton.textContent = "Muerto";
       deleteButton.addEventListener("click", function() {
         deleteCreature(index);
       });
@@ -284,8 +291,11 @@ document.addEventListener("DOMContentLoaded", function() {
       creatureItem.appendChild(coordinatesY);
       creatureItem.appendChild(coordinatesButton);
 
+      creatureItem.appendChild(document.createElement("br"));
+      creatureItem.appendChild(pgLabel);
       creatureItem.appendChild(subtractHealthInput);
       creatureItem.appendChild(subtractButton);
+      creatureItem.appendChild(document.createElement("br"));
       creatureItem.appendChild(deleteButton);
   
       creatureList.appendChild(creatureItem);
