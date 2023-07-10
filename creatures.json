@@ -4,7 +4,31 @@
       "health": 22
     },
     {
-      "name": "Goblins",
+      "name": "Goblin-Arco",
       "health": 7
+    },
+    {
+      "name": "Goblin-Espada",
+      "health": 8
+    },
+    {
+      "name": "Goblin-Mago",
+      "health": 8
+    },
+    {
+      "name": "Goblin-Lanza",
+      "health": 7
+    },
+    {
+      "name": "Hombre-Lagarto",
+      "health": 22
+    },
+    {
+      "name": "Diablillo",
+      "health": 10
+    },
+    {
+      "name": "Leonidas",
+      "health": 82
     }
   ]

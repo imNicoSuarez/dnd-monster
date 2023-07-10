@@ -81,11 +81,34 @@ document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.getElementById("grid");
     gridContainer.innerHTML = "";
   
-    for (let row = 1; row <= 21; row++) {
-      for (let col = 1; col <= 15; col++) {
+    for (let row = 0; row <= 21; row++) {
+      for (let col = 0; col <= 15; col++) {
         const gridCell = document.createElement("div");
-        gridCell.classList.add("gridCell");
-        gridCell.id = `cell-${row}-${LETRAS[col-1]}`;
+        
+        
+        if (col == 0 & row==0 ) {
+            gridCell.id = `cell-0-0`;
+        } else {
+            if (row == 0 & col >= 1) {
+                gridCell.id = `cell-${row}-${LETRAS[col-1]}`;
+                const HeaderCol = document.createElement("span");
+                HeaderCol.textContent = LETRAS[col-1];
+                gridCell.classList.add("gridCellHeader");
+                gridCell.appendChild(HeaderCol);
+
+            } else if (col == 0 & row >= 1 ) {
+                gridCell.id = `cell-${row}-header`;
+                const HeaderRow = document.createElement("span");
+                HeaderRow.textContent = row;
+                gridCell.classList.add("gridCellHeader");
+                gridCell.appendChild(HeaderRow);
+            } else {
+                gridCell.id = `cell-${row}-${LETRAS[col-1]}`;
+                gridCell.classList.add("gridCell");
+            }
+            
+        }
+        
         gridContainer.appendChild(gridCell);
       }
     }
