@@ -1,0 +1,97 @@
+Copy code
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+#gridContainer {
+  margin: 30px auto;
+  width: 616px;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(15, 40px);
+  gap: 1px;
+  background-color: #ccc;
+  border: 1px solid #999;
+}
+
+.gridCell {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+}
+
+#creatureList {
+  margin-top: 20px;
+}
+
+.creatureItem {
+  margin-bottom: 5px;
+}
+
+.creatureItem span {
+  display: block;
+}
+
+.creatureItem .deleteButton {
+  margin-left: 5px;
+}
+
+.creatureElement {
+  display: inline-block;
+  border: 1px solid #999;
+  padding: 5px;
+  margin: 5px;
+}
+
+.creatureDead {
+  background-color: red;
+  text-decoration: line-through;
+}
+
+.flexcontainer {
+  display: flex;
+}
+
+.flcolumna-1 {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  overflow-y: scroll;
+}
+
+.flcolumna-2 {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+.creatureImage {
+  width: 50px;
+}
+
+.creatureImageDraw {
+  width: 36px;
+  border-radius: 100%;
+  border: 2px solid #FFB800;
+}
