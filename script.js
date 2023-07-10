@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (gridCell) {
         const img = document.createElement("img");
         img.classList.add("creatureImageDraw");
-        img.src = `/img/${creature.name.toLocaleLowerCase()}.png`;
+        img.src = `./img/${creature.name.toLocaleLowerCase()}.png`;
         gridCell.appendChild(img);
       }
     });
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const img = document.createElement("img");
       img.classList.add("creatureImage");
-      img.src = `/img/${creature.name.toLocaleLowerCase()}.png`
+      img.src = `./img/${creature.name.toLocaleLowerCase()}.png`
   
       const name = document.createElement("span");
       name.classList.add("creatureName");
