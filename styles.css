@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-h1 {
+h1, h3 {
   text-align: center;
 }
 
@@ -92,6 +92,7 @@ div.creatureDead {
 
 .flexcontainer {
   display: flex;
+  flex: 3;
 }
 
 .flcolumna-1 {
@@ -128,4 +129,12 @@ img.creatureDead{
 .subtractHealth {
   margin: 5px;
   width: 50px;
+}
+
+.fullcontainer {
+  display: flex;
+}
+
+.creatureForm {
+  width:300px;
 }
