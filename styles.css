@@ -26,20 +26,20 @@ select, button {
 
 #gridContainer {
   margin: 30px auto;
-  width: 616px;
+  width: 316px;
 }
 
 #grid {
   display: grid;
-  grid-template-columns: repeat(15, 40px);
+  grid-template-columns: repeat(15, 20px);
   gap: 1px;
   background-color: #ccc;
   border: 1px solid #999;
 }
 
 .gridCell {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   background-color: #fff;
 }
 
@@ -95,7 +95,7 @@ div.creatureDead {
 }
 
 .flcolumna-1 {
-  flex: 1;
+  flex: 2;
   padding: 20px;
   border: 1px solid #ccc;
   margin: 10px;
@@ -114,7 +114,7 @@ div.creatureDead {
 }
 
 .creatureImageDraw {
-  width: 36px;
+  width: 16px;
   border-radius: 100%;
   border: 2px solid #FFB800;
 }
@@ -122,7 +122,7 @@ div.creatureDead {
 img.creatureDead{
   border: 6px solid red;
   opacity: 30%;
-  width: 28px;
+  width: 08px;
 }
 
 .subtractHealth {
