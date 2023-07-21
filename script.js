@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
     creatureForm.addEventListener("submit", addCreatures);
   
     loadDefaultCreatures();
-    loadCreatures();
+    // loadCreatures();
+    const creatureList = document.getElementById("creatureList");
+    creatureList.innerHTML = "No hay Monstruos seleccionados";
     loadCreatureOptions();
     createGrid();
     drawCreaturesOnGrid();
@@ -56,10 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
     healthInput.value = "";
     quantityInput.value = "1";
     selectCreature.value = "";
-    xCoordinateInput.value = "";
-    yCoordinateInput.value = "";
+    xCoordinateInput.value = "A";
+    yCoordinateInput.value = "1";
   
-    loadCreatures();
+    // loadCreatures();
     drawCreaturesOnGrid();
   }
   
@@ -71,7 +73,11 @@ document.addEventListener("DOMContentLoaded", function() {
       creatures.splice(index, 1);
   
       localStorage.setItem("creatures", JSON.stringify(creatures));
-      loadCreatures();
+    //   loadCreatures();
+
+    // Usar el clean pantalla
+    const creatureList = document.getElementById("creatureList");
+    creatureList.innerHTML = "No hay Monstruos seleccionados";
       drawCreaturesOnGrid();
     }
   }
@@ -81,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.getElementById("grid");
     gridContainer.innerHTML = "";
   
-    for (let row = 0; row <= 21; row++) {
-      for (let col = 0; col <= 15; col++) {
+    for (let row = 0; row <= 15; row++) {
+      for (let col = 0; col <= 21; col++) {
         const gridCell = document.createElement("div");
         
         
@@ -194,7 +200,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
   
         localStorage.setItem("creatures", JSON.stringify(creatures));
-        loadCreatures();
+        // loadCreatures();
+        showCurrentCriature(index)
         drawCreaturesOnGrid() 
       }
   
@@ -217,10 +224,11 @@ document.addEventListener("DOMContentLoaded", function() {
         creatures[index].yCoordinate = coordenadesYValue;
   
         localStorage.setItem("creatures", JSON.stringify(creatures));
-        loadCreatures();
+        // loadCreatures();
         drawCreaturesOnGrid();
       
-  
+        showCurrentCriature(index);
+
         CoordenadasXInput.value = "";
         CoordenadasYInput.value = "";
     }
@@ -274,8 +282,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const coordinatesX  = document.createElement("select");
       coordinatesX.classList.add("xCoordinate");
 
-      for (let i = 65; i <= 79; i++) {
-        const letra = String.fromCharCode(i);
+      for (let i = 0; i <= 21; i++) {
+        const letra = LETRAS[i];
         const option = document.createElement("option");
         option.value = letra;
         option.textContent = letra;
@@ -290,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const coordinatesY  = document.createElement("select");
       coordinatesY.classList.add("yCoordinate");
 
-      for (let i = 1; i <= 21; i++) {
+      for (let i = 1; i <= 15; i++) {
         const option = document.createElement("option");
         option.value = i;
         option.textContent = i;
@@ -311,6 +319,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const subtractHealthInput = document.createElement("input");
       subtractHealthInput.classList.add("subtractHealth");
       subtractHealthInput.type = "number";
+      subtractHealthInput.inputMode = "numeric";
+      subtractHealthInput.pattern = "\d*";
       subtractHealthInput.min = "0";
       subtractHealthInput.id = `subtractHealth-${index}`;
   
@@ -382,6 +392,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     localStorage.setItem("creatures", JSON.stringify(creatures));
     drawCreaturesOnGrid();
-    loadCreatures();
+    showCurrentCriature(creatureIndex);
+    // loadCreatures();
   }
   

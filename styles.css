@@ -26,20 +26,20 @@ select, button {
 
 #gridContainer {
   margin: 30px auto;
-  width: 337px;
+  width: min-content;
 }
 
 #grid {
   display: grid;
-  grid-template-columns: repeat(16, 20px);
+  grid-template-columns: repeat(22, 40px);
   gap: 1px;
   background-color: #ccc;
   border: 1px solid #999;
 }
 
 .gridCell {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   background-color: #fff;
 }
 
@@ -96,18 +96,18 @@ div.creatureDead {
 }
 
 .flcolumna-1 {
-  flex: 2;
+  flex: 1;
   padding: 20px;
   border: 1px solid #ccc;
-  margin: 10px;
+  margin: 0 10px;
   overflow-y: scroll;
 }
 
 .flcolumna-2 {
-  flex: 1;
+  flex: 2;
   padding: 20px;
   border: 1px solid #ccc;
-  margin: 10px;
+  margin: 0 10px;
 }
 
 .creatureImage {
@@ -115,7 +115,7 @@ div.creatureDead {
 }
 
 .creatureImageDraw {
-  width: 16px;
+  width: 36px;
   border-radius: 100%;
   border: 2px solid #FFB800;
   cursor: pointer;
@@ -124,7 +124,7 @@ div.creatureDead {
 img.creatureDead{
   border: 6px solid red;
   opacity: 30%;
-  width: 08px;
+  width: 28px;
 }
 
 .subtractHealth {
@@ -138,7 +138,7 @@ img.creatureDead{
 
 .creatureForm {
   width: 200px;
-  margin: 5px;
+  margin: 0 5px;
   
 }
 
@@ -148,4 +148,10 @@ img.creatureDead{
 
 .dragging {
   cursor: -webkit-grabbing; cursor: grabbing;
+}
+
+.gridCellHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
