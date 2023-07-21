@@ -118,6 +118,7 @@ div.creatureDead {
   width: 16px;
   border-radius: 100%;
   border: 2px solid #FFB800;
+  cursor: pointer;
 }
 
 img.creatureDead{
@@ -143,4 +144,8 @@ img.creatureDead{
 
 .creatureForm *{ 
   width: 100%;
+}
+
+.dragging {
+  cursor: -webkit-grabbing; cursor: grabbing;
 }

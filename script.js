@@ -123,16 +123,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const gridCells = gridContainer.getElementsByClassName("gridCell");
     Array.from(gridCells).forEach(gridCell => {
       gridCell.textContent = "";
+      gridCell.addEventListener("dragover", allowDrop);
+      gridCell.addEventListener("drop", handleDrop);
     });
   
     creatures.forEach(function(creature, index) {
       const { xCoordinate, yCoordinate } = creature;
       const cellId = `cell-${yCoordinate}-${xCoordinate}`;
       const gridCell = document.getElementById(cellId);
-
-  
+      
       if (gridCell) {
         const img = document.createElement("img");
+        img.draggable = true;
+        img.id = `${index}-${yCoordinate}-${xCoordinate}`
+        img.addEventListener("dragstart", handleDragStart);
+        img.addEventListener("click",  function() {
+            showCurrentCriature(index)
+          });
         img.classList.add("creatureImageDraw");
         img.src = `./img/${creature.name.toLocaleLowerCase()}.png`;
         if (creature.health <= 0 ) {
@@ -140,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } 
         gridCell.appendChild(img);
       }
+      
     });
   }
 
@@ -227,7 +235,21 @@ document.addEventListener("DOMContentLoaded", function() {
     let creatures = JSON.parse(localStorage.getItem("creatures")) || [];
   
     creatures.forEach(function(creature, index) {
-      const creatureItem = document.createElement("div");
+        creatureList.appendChild(creatureEditTemplate(creature, index));
+    });
+  }
+
+  function showCurrentCriature(index){
+    const creatureList = document.getElementById("creatureList");
+    creatureList.innerHTML = "";
+
+    let creatures = JSON.parse(localStorage.getItem("creatures")) || [];
+    creatureList.appendChild(creatureEditTemplate(creatures[index], index));
+  }
+
+
+  function creatureEditTemplate(creature, index) {
+    const creatureItem = document.createElement("div");
 
       if (creature.health <= 0 ) {
         creatureItem.classList.add("creatureDead");
@@ -321,7 +343,45 @@ document.addEventListener("DOMContentLoaded", function() {
       creatureItem.appendChild(document.createElement("br"));
       creatureItem.appendChild(deleteButton);
   
-      creatureList.appendChild(creatureItem);
-    });
+      return creatureItem;
+  }
+
+  function handleDragStart(event) {
+    console.log(event.target.id, "esto es")
+    event.dataTransfer.setData("criature", event.target.id);
+    event.target.classList.add("dragging");
+  
+    const creatureIndex = parseInt(event.target.dataset.index);
+    event.dataTransfer.setData("text", creatureIndex);
+  }
+  
+  function allowDrop(event) {
+    event.preventDefault();
+    // console.log(event, "paso por aca")
+  }
+  
+  function handleDrop(event) {
+    event.preventDefault();
+  
+    const creatureId = event.dataTransfer.getData("criature");
+    const creatureElement = document.getElementById(creatureId);
+
+    console.log(creatureId, "esto es")
+
+    const [_, targetY, targetX] = event.target.id.split("-");
+
+    console.log("Y:",targetY, "X:", targetX)
+
+    const creatureIndex = parseInt(creatureId.split("-")[0]);
+  
+    const creatures = JSON.parse(localStorage.getItem("creatures")) || [];
+    const creature = creatures[creatureIndex];
+  
+    creature.xCoordinate = targetX;
+    creature.yCoordinate = targetY;
+  
+    localStorage.setItem("creatures", JSON.stringify(creatures));
+    drawCreaturesOnGrid();
+    loadCreatures();
   }
   
