@@ -134,16 +134,23 @@ img.creatureDead{
 
 .fullcontainer {
   display: flex;
+  flex-direction: column;
 }
 
 .creatureForm {
-  width: 200px;
-  margin: 0 5px;
-  
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 0 10px;
+  overflow-y: scroll;
 }
 
 .creatureForm *{ 
-  width: 100%;
+  width: 300px;
+}
+
+#creatureForm {
+  display: flex;
 }
 
 .dragging {
@@ -154,4 +161,11 @@ img.creatureDead{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.col-1 {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
 }
