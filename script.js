@@ -3,6 +3,8 @@ const LETRAS = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 document.addEventListener("DOMContentLoaded", function() {
     const creatureForm = document.getElementById("creatureForm");
     creatureForm.addEventListener("submit", addCreatures);
+
+    document.getElementById("cerrar").addEventListener("click", cerrarModal)
   
     loadDefaultCreatures();
     // loadCreatures();
@@ -11,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCreatureOptions();
     createGrid();
     drawCreaturesOnGrid();
+
   });
   
 
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const creature = {
         name: nameInput.value,
         health: parseInt(healthInput.value),
+        baseHealth: parseInt(healthInput.value),
         xCoordinate: xCoordinateInput.value,
         yCoordinate: yCoordinateInput.value
     };
@@ -78,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Usar el clean pantalla
     const creatureList = document.getElementById("creatureList");
     creatureList.innerHTML = "No hay Monstruos seleccionados";
-      drawCreaturesOnGrid();
+
+     showAndHideModal("cerrar")
+     drawCreaturesOnGrid();
     }
   }
 
@@ -137,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const { xCoordinate, yCoordinate } = creature;
       const cellId = `cell-${yCoordinate}-${xCoordinate}`;
       const gridCell = document.getElementById(cellId);
-      
+      const porcentajeVida = (creature.health / creature.baseHealth) * 100;
       if (gridCell) {
         const img = document.createElement("img");
         img.draggable = true;
@@ -145,12 +151,17 @@ document.addEventListener("DOMContentLoaded", function() {
         img.addEventListener("dragstart", handleDragStart);
         img.addEventListener("click",  function() {
             showCurrentCriature(index)
+            abrirModal()
           });
         img.classList.add("creatureImageDraw");
         img.src = `./img/${creature.name.toLocaleLowerCase()}.png`;
-        if (creature.health <= 0 ) {
+         
+        if (porcentajeVida < 75  && porcentajeVida > 0) {
+            img.classList.add("creatureCasiDead");
+        } else if ( porcentajeVida <= 0 ) { 
             img.classList.add("creatureDead");
-        } 
+        }
+
         gridCell.appendChild(img);
       }
       
@@ -203,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // loadCreatures();
         showCurrentCriature(index)
         drawCreaturesOnGrid() 
+        showAndHideModal("cerrar")
       }
   
       subtractHealthInput.value = "";
@@ -323,9 +335,11 @@ document.addEventListener("DOMContentLoaded", function() {
       subtractHealthInput.pattern = "\d*";
       subtractHealthInput.min = "0";
       subtractHealthInput.id = `subtractHealth-${index}`;
+      subtractHealthInput.classList.add("fullButton");
   
       const subtractButton = document.createElement("button");
       subtractButton.textContent = "Restar PG";
+      subtractButton.classList.add("fullButton");
       subtractButton.addEventListener("click", function() {
         subtractCreatureHealth(index);
       });
@@ -333,7 +347,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const deleteButton = document.createElement("button");
       deleteButton.classList.add("deleteButton");
       deleteButton.textContent = "Muerto";
-      deleteButton.addEventListener("click", function() {
+      deleteButton.addEventListener("click", function(event) {
+        event.preventDefault();
         deleteCreature(index);
       });
   
@@ -341,17 +356,23 @@ document.addEventListener("DOMContentLoaded", function() {
       creatureItem.appendChild(img);
       creatureItem.appendChild(name);
       creatureItem.appendChild(health);
-      creatureItem.appendChild(coordinates);
-      creatureItem.appendChild(coordinatesX);
-      creatureItem.appendChild(coordinatesY);
-      creatureItem.appendChild(coordinatesButton);
-
+    //   creatureItem.appendChild(coordinates);
+    //   creatureItem.appendChild(coordinatesX);
+    //   creatureItem.appendChild(coordinatesY);
+    //   creatureItem.appendChild(coordinatesButton);
       creatureItem.appendChild(document.createElement("br"));
-      creatureItem.appendChild(pgLabel);
-      creatureItem.appendChild(subtractHealthInput);
-      creatureItem.appendChild(subtractButton);
-      creatureItem.appendChild(document.createElement("br"));
-      creatureItem.appendChild(deleteButton);
+      if (creature.health <= 0 ) {
+        creatureItem.appendChild(document.createElement("br"));
+        creatureItem.appendChild(document.createElement("br"));
+        creatureItem.appendChild(document.createElement("br"));
+        creatureItem.appendChild(deleteButton);
+      } else {
+        creatureItem.appendChild(pgLabel);
+        creatureItem.appendChild(subtractHealthInput);
+        creatureItem.appendChild(document.createElement("br"));
+        creatureItem.appendChild(document.createElement("br"));
+        creatureItem.appendChild(subtractButton);
+      }
   
       return creatureItem;
   }
@@ -395,4 +416,26 @@ document.addEventListener("DOMContentLoaded", function() {
     showCurrentCriature(creatureIndex);
     // loadCreatures();
   }
+
+  function cerrarModal(event) {
+    event.preventDefault();
+    showAndHideModal("cerrar")
+  }
   
+
+  function abrirModal() {
+    showAndHideModal("abrir")
+  }
+
+  function showAndHideModal(condition) {
+    let conFlo = document.getElementById("containerFloat");
+
+    if (condition == 'cerrar') {
+        conFlo.classList.remove("show")
+        conFlo.classList.add("hide")
+    } else {
+        conFlo.classList.remove("hide")
+        conFlo.classList.add("show")
+    }
+
+  }

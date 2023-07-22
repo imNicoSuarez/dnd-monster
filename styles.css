@@ -31,15 +31,15 @@ select, button {
 
 #grid {
   display: grid;
-  grid-template-columns: repeat(22, 40px);
+  grid-template-columns: repeat(22, 50px);
   gap: 1px;
   background-color: #ccc;
   border: 1px solid #999;
 }
 
 .gridCell {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #fff;
 }
 
@@ -93,14 +93,20 @@ div.creatureDead {
 .flexcontainer {
   display: flex;
   flex: 3;
+  position: relative;
 }
 
-.flcolumna-1 {
-  flex: 1;
+.containerFloat {
   width: 300px;
   border: 1px solid #ccc;
-  margin: 0 10px;
+  margin: 10px;
+  padding: 20px;
   overflow-y: scroll;
+  position: absolute;
+  z-index: 5;
+  top: 50px;
+  left: 50px;
+  background: white;
 }
 
 .flcolumna-2 {
@@ -115,16 +121,22 @@ div.creatureDead {
 }
 
 .creatureImageDraw {
-  width: 36px;
+  width: 46px;
   border-radius: 100%;
-  border: 2px solid #FFB800;
+  border: 2px solid #369d4a;
   cursor: pointer;
 }
+
+
+img.creatureCasiDead{
+  border: 2px solid #FFB800;
+}
+
 
 img.creatureDead{
   border: 6px solid red;
   opacity: 30%;
-  width: 28px;
+  width: 38px;
 }
 
 .subtractHealth {
@@ -168,4 +180,17 @@ img.creatureDead{
   flex: 1;
   padding: 20px;
   margin: 0 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.fullButton{
+  width: 100%;
+  margin: 0;
 }
