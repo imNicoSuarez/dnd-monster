@@ -97,7 +97,7 @@ div.creatureDead {
 
 .flcolumna-1 {
   flex: 1;
-  padding: 20px;
+  width: 300px;
   border: 1px solid #ccc;
   margin: 0 10px;
   overflow-y: scroll;
@@ -146,7 +146,7 @@ img.creatureDead{
 }
 
 .creatureForm *{ 
-  width: 300px;
+  width: 230px;
 }
 
 #creatureForm {
