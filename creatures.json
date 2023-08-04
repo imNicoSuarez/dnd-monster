@@ -30,5 +30,126 @@
     {
       "name": "Leonidas",
       "health": 82
+    },
+    {
+      "name": "Ankheg",
+      "health": 39
+    },
+    {
+      "name": "Arana-Gigante",
+      "health": 26
+    },
+    {
+      "name": "Arpia",
+      "health": 38
+    },
+    {
+      "name": "Astaroth",
+      "health": 400
+    },
+    {
+      "name": "Banshee",
+      "health": 58
+    },
+    {
+      "name": "Cangrego-Gigante",
+      "health": 13
+    },
+    {
+      "name": "Centauro",
+      "health": 45
+    },
+    {
+      "name": "Dragon-blanco-Joven",
+      "health": 133
+    },
+    {
+      "name": "Esqueleto",
+      "health": 13
+    },
+    {
+      "name": "Estirge",
+      "health": 2
+    },
+    {
+      "name": "Farantus",
+      "health": 148
+    },
+    {
+      "name": "Gorthok",
+      "health": 73
+    },
+    {
+      "name": "Gelatina-Ocre",
+      "health": 45
+    },
+    {
+      "name": "Gul-Enano",
+      "health": 40
+    },
+    {
+      "name": "Gul",
+      "health": 22
+    },
+    {
+      "name": "Carronero-Reptante",
+      "health": 51
+    },
+    {
+      "name": "Hombre-Rata-Espada",
+      "health": 33
+    },
+    {
+      "name": "Hombre-Rata-Femenino",
+      "health": 33
+    },
+    {
+      "name": "Hombre-Rata-Matriarca",
+      "health": 33
+    },
+    {
+      "name": "Hombre-Rata",
+      "health": 33
+    },
+    {
+      "name": "Jabali",
+      "health": 11
+    },
+    {
+      "name": "Lobo-Alfa",
+      "health": 22
+    },
+    {
+      "name": "Manticora",
+      "health": 68
+    },
+    {
+      "name": "Mimeto",
+      "health": 58
+    },
+    {
+      "name": "Orco-Arco",
+      "health": 15
+    },
+    {
+      "name": "Orco-Comun",
+      "health": 15
+    },
+    {
+      "name": "Orco-Espada",
+      "health": 15
+    },
+    {
+      "name": "Orco-Hacha",
+      "health": 15
+    },
+    {
+      "name": "Semi-Orco",
+      "health": 30
+    },
+    {
+      "name": "Tiburon",
+      "health": 45
     }
+    
   ]

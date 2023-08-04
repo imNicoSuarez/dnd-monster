@@ -214,7 +214,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // loadCreatures();
         showCurrentCriature(index)
         drawCreaturesOnGrid() 
-        showAndHideModal("cerrar")
+        if (creatures[index].health != 0) {
+            showAndHideModal("cerrar")
+        }
+        
       }
   
       subtractHealthInput.value = "";
