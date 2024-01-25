@@ -35,12 +35,14 @@ select, button {
   gap: 1px;
   background-color: #ccc;
   border: 1px solid #999;
+  background-repeat: no-repeat;
+  background-position: 51px 20px;
 }
 
 .gridCell {
   width: 50px;
   height: 50px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #creatureList {

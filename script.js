@@ -15,6 +15,18 @@ document.addEventListener("DOMContentLoaded", function() {
     drawCreaturesOnGrid();
 
   });
+
+  function changeBattelMap() {
+    // Obtener el valor seleccionado del selector
+    var selector = document.getElementById("mapBattel");
+    var valorSeleccionado = selector.options[selector.selectedIndex].value;
+  
+    // Obtener el div que deseas cambiar
+    var miDiv = document.getElementById("grid");
+  
+    // Establecer la imagen de fondo del div
+    miDiv.style.backgroundImage = "url(./img/map/" + valorSeleccionado + ".png)";
+  }
   
 
 
@@ -154,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
             abrirModal()
           });
         img.classList.add("creatureImageDraw");
-        img.src = `./img/${creature.name.toLocaleLowerCase()}.png`;
+        img.src = `./img/criature/${creature.name.toLocaleLowerCase()}.png`;
          
         if (porcentajeVida < 75  && porcentajeVida > 0) {
             img.classList.add("creatureCasiDead");
@@ -281,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const img = document.createElement("img");
       img.classList.add("creatureImage");
-      img.src = `./img/${creature.name.toLocaleLowerCase()}.png`
+      img.src = `./img/criature/${creature.name.toLocaleLowerCase()}.png`
   
       const name = document.createElement("span");
       name.classList.add("creatureName");
